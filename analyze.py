@@ -119,7 +119,41 @@ def figure_b(summary):
     Do not save files here.
     """
     # BEGIN TASK FIGURE_B
-    raise NotImplementedError('Prepare summary data and design figure B.')
+    data = summary[summary["experiment"] == "B"]
+    fig, axes = plt.subplots(
+        1, 2, figsize=(6, 3.5),
+        constrained_layout=True
+    )
+
+    colors = {"OLS": "tab:blue", "LAD": "tab:orange"}
+    metrics = [
+        ("coefficient_mse", "coefficient_mcse", "Coefficient MSE"),
+        ("prediction_mse", "prediction_mcse", "Prediction MSE")
+    ]
+
+    for ax, (mse_col, mcse_col, title) in zip(axes, metrics):
+        for method in ["OLS", "LAD"]:
+            subset = data[data["method"] == method].sort_values("rho")
+
+            ax.errorbar(
+                subset["rho"],
+                subset[mse_col],
+                yerr=2 * subset[mcse_col],
+                label=method,
+                color=colors[method],
+                marker="o",
+                linewidth=1.5,
+                markersize=4,
+                capsize=3
+            )
+
+        ax.set_title(title)
+        ax.set_xlabel(r"Correlation $\rho$")
+        ax.set_ylabel(title)
+        ax.grid(axis="y", alpha=0.3)
+    axes[0].legend(frameon=False)
+
+    return fig
     # END TASK FIGURE_B
 
 

@@ -14,5 +14,39 @@ def make_scenarios():
     Choose the values yourselves; the handout grid is only an example.
     """
     # BEGIN TASK GRID
-    raise NotImplementedError('Choose and construct your scenario dictionary.')
+    
+    scenarios = {}
+    n = 200
+
+    # Experiment A
+    p_values = [10, 40, 80, 120, 160, 180]
+
+    for error_dist in ["normal", "laplace"]:
+        for p in p_values:
+            scenario_id = f"A_{error_dist}_p{p:03d}"
+
+            scenarios[scenario_id] = {
+                "experiment": "A",
+                "n": n,
+                "p": p,
+                "rho": 0.0,
+                "error_distribution": error_dist,
+            }
+
+    # Experiment B
+    rho_values = [0.0, 0.5, 0.8, 0.9, 0.95, 0.99]
+
+    for rho in rho_values:
+        scenario_id = f"B_rho{int(round(rho * 100)):02d}"
+
+        scenarios[scenario_id] = {
+            "experiment": "B",
+            "n": n,
+            "p": 100,
+            "rho": rho,
+            "error_distribution": "normal",
+        }
+
+    return scenarios
+
     # END TASK GRID

@@ -25,7 +25,39 @@ def summarize(runs):
     Report failures: n_total - n_ok. Do not average over scenarios.
     """
     # BEGIN TASK SUMMARY
-    raise NotImplementedError('Aggregate your raw results and compute Monte Carlo standard errors.')
+    group_cols = [
+        "study_id", "scenario_id", "experiment",
+        "n", "p", "gamma", "rho",
+        "error_distribution", "method",
+    ]
+
+    summary = (
+        runs.groupby(group_cols, dropna=False, sort=True)
+        .agg(
+            n_total=("coefficient_error", "size"),
+            n_ok=("coefficient_error", "count"),
+            coefficient_mse=("coefficient_error", "mean"),
+            prediction_mse=("prediction_error", "mean"),
+            coefficient_sd=("coefficient_error", "std"),
+            prediction_sd=("prediction_error", "std"),
+            n_prediction=("prediction_error", "count"),
+        )
+        .reset_index()
+    )
+
+    # Monte Carlo SE
+    summary["coefficient_mcse"] = (
+        summary["coefficient_sd"] / np.sqrt(summary["n_ok"])
+    )
+    summary["prediction_mcse"] = (
+        summary["prediction_sd"] / np.sqrt(summary["n_prediction"])
+    )
+
+    summary = summary.drop(
+        columns=["coefficient_sd", "prediction_sd", "n_prediction"]
+    )
+
+    return summary
     # END TASK SUMMARY
 
 

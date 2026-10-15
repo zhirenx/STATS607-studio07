@@ -1,0 +1,241 @@
+{
+  "environment": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "python": "3.12.14",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0"
+  },
+  "methods": [
+    {
+      "class": "OLS",
+      "method": "OLS",
+      "settings": {
+        "fit_intercept": false
+      }
+    },
+    {
+      "class": "LAD",
+      "method": "LAD",
+      "settings": {
+        "alpha": 0.0,
+        "fit_intercept": false,
+        "quantile": 0.5,
+        "solver": "highs"
+      }
+    }
+  ],
+  "model": {
+    "beta": "ones(p)/sqrt(p)",
+    "covariance": "rho**abs(j-k)",
+    "laplace_scale": 0.7071067811865475,
+    "normal_errors": "N(0,1)"
+  },
+  "n_reps": 100,
+  "rng": {
+    "generator": "PCG64",
+    "hash_words": "first 16 SHA256 bytes as 4 little-endian uint32",
+    "label": "compact JSON [scenario_id, rep, task]",
+    "seed_sequence": "[seed, *SHA256_words]",
+    "tasks": [
+      "data",
+      "method:OLS",
+      "method:LAD"
+    ]
+  },
+  "scenarios": {
+    "A_laplace_p010": {
+      "error_distribution": "laplace",
+      "experiment": "A",
+      "n": 200,
+      "p": 10,
+      "rho": 0.0
+    },
+    "A_laplace_p020": {
+      "error_distribution": "laplace",
+      "experiment": "A",
+      "n": 200,
+      "p": 20,
+      "rho": 0.0
+    },
+    "A_laplace_p040": {
+      "error_distribution": "laplace",
+      "experiment": "A",
+      "n": 200,
+      "p": 40,
+      "rho": 0.0
+    },
+    "A_laplace_p060": {
+      "error_distribution": "laplace",
+      "experiment": "A",
+      "n": 200,
+      "p": 60,
+      "rho": 0.0
+    },
+    "A_laplace_p080": {
+      "error_distribution": "laplace",
+      "experiment": "A",
+      "n": 200,
+      "p": 80,
+      "rho": 0.0
+    },
+    "A_laplace_p100": {
+      "error_distribution": "laplace",
+      "experiment": "A",
+      "n": 200,
+      "p": 100,
+      "rho": 0.0
+    },
+    "A_laplace_p120": {
+      "error_distribution": "laplace",
+      "experiment": "A",
+      "n": 200,
+      "p": 120,
+      "rho": 0.0
+    },
+    "A_laplace_p140": {
+      "error_distribution": "laplace",
+      "experiment": "A",
+      "n": 200,
+      "p": 140,
+      "rho": 0.0
+    },
+    "A_laplace_p160": {
+      "error_distribution": "laplace",
+      "experiment": "A",
+      "n": 200,
+      "p": 160,
+      "rho": 0.0
+    },
+    "A_laplace_p180": {
+      "error_distribution": "laplace",
+      "experiment": "A",
+      "n": 200,
+      "p": 180,
+      "rho": 0.0
+    },
+    "A_normal_p010": {
+      "error_distribution": "normal",
+      "experiment": "A",
+      "n": 200,
+      "p": 10,
+      "rho": 0.0
+    },
+    "A_normal_p020": {
+      "error_distribution": "normal",
+      "experiment": "A",
+      "n": 200,
+      "p": 20,
+      "rho": 0.0
+    },
+    "A_normal_p040": {
+      "error_distribution": "normal",
+      "experiment": "A",
+      "n": 200,
+      "p": 40,
+      "rho": 0.0
+    },
+    "A_normal_p060": {
+      "error_distribution": "normal",
+      "experiment": "A",
+      "n": 200,
+      "p": 60,
+      "rho": 0.0
+    },
+    "A_normal_p080": {
+      "error_distribution": "normal",
+      "experiment": "A",
+      "n": 200,
+      "p": 80,
+      "rho": 0.0
+    },
+    "A_normal_p100": {
+      "error_distribution": "normal",
+      "experiment": "A",
+      "n": 200,
+      "p": 100,
+      "rho": 0.0
+    },
+    "A_normal_p120": {
+      "error_distribution": "normal",
+      "experiment": "A",
+      "n": 200,
+      "p": 120,
+      "rho": 0.0
+    },
+    "A_normal_p140": {
+      "error_distribution": "normal",
+      "experiment": "A",
+      "n": 200,
+      "p": 140,
+      "rho": 0.0
+    },
+    "A_normal_p160": {
+      "error_distribution": "normal",
+      "experiment": "A",
+      "n": 200,
+      "p": 160,
+      "rho": 0.0
+    },
+    "A_normal_p180": {
+      "error_distribution": "normal",
+      "experiment": "A",
+      "n": 200,
+      "p": 180,
+      "rho": 0.0
+    },
+    "B_rho00": {
+      "error_distribution": "normal",
+      "experiment": "B",
+      "n": 200,
+      "p": 100,
+      "rho": 0.0
+    },
+    "B_rho50": {
+      "error_distribution": "normal",
+      "experiment": "B",
+      "n": 200,
+      "p": 100,
+      "rho": 0.5
+    },
+    "B_rho80": {
+      "error_distribution": "normal",
+      "experiment": "B",
+      "n": 200,
+      "p": 100,
+      "rho": 0.8
+    },
+    "B_rho90": {
+      "error_distribution": "normal",
+      "experiment": "B",
+      "n": 200,
+      "p": 100,
+      "rho": 0.9
+    },
+    "B_rho95": {
+      "error_distribution": "normal",
+      "experiment": "B",
+      "n": 200,
+      "p": 100,
+      "rho": 0.95
+    },
+    "B_rho99": {
+      "error_distribution": "normal",
+      "experiment": "B",
+      "n": 200,
+      "p": 100,
+      "rho": 0.99
+    }
+  },
+  "seed": 20261015,
+  "source_sha256": {
+    "scenarios.py": "10e1c4d5a8856c46221712777d069d6f6b21152a758b2ba45e5f3d5f5b95da69",
+    "simulate.py": "24d10e615224e0cec7f7a78915fcf534ba4569259f906d20d23e3abe3048926b",
+    "src/__init__.py": "c7f77360b57d93cd252250722e942874977ab8648c997fa09499d6b43f38c863",
+    "src/dgps.py": "4537c2a9baf848fb2dc4636d54bafdcaa0aa0b22824d68e181cd487befa93394",
+    "src/methods.py": "b6eb1744d8a32c1e420497dc59d2bd34d7a824f095a11797f10afd18915d1247",
+    "src/metrics.py": "6bdd0a4308a5f83e052ad97c00f028357f112b9ddee6d4857915ef67b6d63c78",
+    "src/simulation.py": "123e1b64a1304ac31f4ec2d4e1c4167c8ea58c3b783d73c7943e34d511671206"
+  },
+  "study_id": "study_6a624934ad74"
+}
